@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoveDaily</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <% if (locals.activityDict) {%>
+            <h1>MoveDaily Training Schedule</h1>
+            <h2>week <%= weekNr %></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Excersise</th>
+                        <th>Reps</th>
+                        <th> Sets </th>
+                        <th> rest time</th>
+                        <th>Information</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for ( let exercise in activityDict) { %>
+                        <tr>
+                            <td> <%= exercise %></td>
+                            <td> <%= reps %></td>
+                            <td> <%= sets %></td>
+                            <td> <%= restTime %></td>
+                            <td>
+                                <form action="/information" method="POST">
+                                    <input type="hidden" name="exerciseName" value="<%= exercise %>">
+                                    <button type="submit">info</button>
+                                </form>
+                            </td> 
+                        </tr>
+                        <% }; %> 
+                </tbody>   
+            </table>
+            
+        <% } else { %>
+            <h1>MoveDaily</h1>
+             <form class="main-form" action="/excersises" method="POST">
+                <label for="week">Select a Week:</label>
+                <select name="week" id="week" required>
+                    <option value="" disabled selected>Select a week</option>
+                    <option value="1">Week 1</option>
+                    <option value="2">Week 2</option>
+                    <option value="3">Week 3</option>
+                    <option value="4">Week 4</option>
+                    <option value="5">Week 5</option>
+                    <option value="6">Week 6</option>
+                    <option value="7">Week 7</option>
+                    <option value="8">Week 8</option>
+                    <option value="9">Week 9</option>
+                    <option value="10">Week 10</option>
+                </select>
+                <button>Create a training schedule</button> 
+            </form>
+            <p>MoveDaily empowers your fitness journey with dynamic, progressive workout plans designed to keep you challenged every week. Start with Week 1, and as you advance, generate new, personalized training schedules that increase in intensity and variety. Every week introduces fresh exercises, pushing you toward your fitness goals faster and smarter.</p>
+           
+        <% } %>
+    </div>
+</body>
+</html>

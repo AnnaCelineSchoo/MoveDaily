@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Information</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+    <div class="container">
+        <% if (locals.exerciseInfo) { %>
+            <p><%- exerciseInfo %></p>
+
+        <% } else { %>
+            <h1>No Information Available</h1>
+            <p>Sorry, we couldn't find any information on this exercise.</p>
+        <% } %>
+        
+        <button onclick="window.history.back();">Back to Schedule</button>
+    </div>
+
+</body>
+</html>
